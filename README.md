@@ -12,23 +12,23 @@ Si estas en windows o no tienes instalado gcc en macOS, es necesario tener gcc (
 
 ## Instalación
 
-1. Clona este repositorio en tu máquina local:
+1. Clona este repositorio en tu máquina local (Por si quieres usarlo en Windows tambien esta, aunque la optimizada para windows esta en https://github.com/Giankrp/Neovim-Config-Windows):
 
     Linux/MacOS:
 
     ```bash
-    git clone https://github.com/Giankrp/NeovimConfig.git ~/.config/nvim
+    git clone https://github.com/Giankrp/Neovim-Config-Linux.git ~/.config/nvim
     ```
 
     Windows (PowerShell):
 
     ```bash
-    git clone https://github.com/Giankrp/NeovimConfig.git $ENV:USERPROFILE\AppData\Local\nvim
+    git clone https://github.com/Giankrp/Neovim-Config-Linux.git $ENV:USERPROFILE\AppData\Local\nvim
     ```
     Windows (CMD):
 
     ```bash
-    git clone https://github.com/Giankrp/NeovimConfig.git %USERPROFILE%\AppData\Local\nvim
+    git clone https://github.com/Giankrp/Neovim-Config-Linux.git %USERPROFILE%\AppData\Local\nvim
     ```
 
 2. Abre Neovim.
