@@ -7,6 +7,12 @@ return {
     end,
   },
 
+  -- {
+  --  "folke/neoconf.nvim",
+  -- config = function()
+  --  require("neoconf").setup({})
+  --end,
+  --},
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
@@ -35,7 +41,12 @@ return {
       { "j-hui/fidget.nvim",       opts = {} },
       "nvimtools/none-ls.nvim",
       -- Additional lua configuration, makes nvim stuff amazing!
-      "folke/neodev.nvim",
+      "folke/lazydev.nvim",
+      {
+        "folke/neoconf.nvim",
+        cmd = "Neoconf",
+        opts = {},
+      },
     },
 
     -- {
@@ -61,7 +72,7 @@ return {
           plugins = {
             {
               name = "@vue/typescript-plugin",
-              location = "/home/gian/.nvm/versions/node/v20.13.1/lib/node_modules/@vue/typescript-plugin",
+              location = " /home/gian/.local/share/pnpm/global/5/node_modules/@vue/typescript-plugin ",
               languages = { "javascript", "typescript", "vue" },
             },
           },
