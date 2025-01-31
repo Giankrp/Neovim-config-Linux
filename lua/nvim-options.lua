@@ -10,3 +10,4 @@ vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
 vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
 vim.opt.termguicolors = true
 vim.opt.relativenumber = true
+vim.o.mouse="a"

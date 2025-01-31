@@ -66,27 +66,34 @@ return {
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
       })
-      lspconfig.ts_ls.setup({
+      lspconfig.volar.setup({
         capabilities = capabilities,
+        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
         init_options = {
-          plugins = {
-            {
-              name = "@vue/typescript-plugin",
-              location = " /home/gian/.local/share/pnpm/global/5/node_modules/@vue/typescript-plugin ",
-              languages = { "javascript", "typescript", "vue" },
-            },
+          vue = {
+            hybridMode = false,
           },
-        },
-        filetypes = {
-          "javascript",
-          "typescript",
-          "vue",
         },
       })
 
-      -- You must make sure volar is setup
-      -- e.g. require'lspconfig'.volar.setup{}
-      -- See volar's section for more information
+      lspconfig.ts_ls.setup({
+        capabilities = capabilities,
+        --init_options = {
+         -- plugins = {
+         --   {
+          --    name = "@vue/typescript-plugin",
+           --   location = " /home/gian/.local/share/pnpm/global/5/node_modules/@vue/typescript-plugin",
+            --  languages = { "vue" },
+            --},
+          --},
+      --  },
+      --  filetypes = {
+       --   "javascript",
+        --  "typescript",
+      --    "vue",
+       -- },
+      })
+
       lspconfig.clangd.setup({
         capabilities = capabilities,
       })
@@ -115,10 +122,6 @@ return {
       })
       lspconfig.cssls.setup({
         capabilities = capabilities,
-      })
-      lspconfig.volar.setup({
-        capabilities = capabilities,
-        -- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
       })
       lspconfig.eslint.setup({
         capabilities = capabilities,
