@@ -79,19 +79,19 @@ return {
       lspconfig.ts_ls.setup({
         capabilities = capabilities,
         --init_options = {
-         -- plugins = {
-         --   {
-          --    name = "@vue/typescript-plugin",
-           --   location = " /home/gian/.local/share/pnpm/global/5/node_modules/@vue/typescript-plugin",
-            --  languages = { "vue" },
-            --},
-          --},
-      --  },
-      --  filetypes = {
-       --   "javascript",
+        -- plugins = {
+        --   {
+        --    name = "@vue/typescript-plugin",
+        --   location = " /home/gian/.local/share/pnpm/global/5/node_modules/@vue/typescript-plugin",
+        --  languages = { "vue" },
+        --},
+        --},
+        --  },
+        --  filetypes = {
+        --   "javascript",
         --  "typescript",
-      --    "vue",
-       -- },
+        --    "vue",
+        -- },
       })
 
       lspconfig.clangd.setup({
@@ -131,6 +131,10 @@ return {
             command = "EslintFixAll",
           })
         end,
+      })
+
+      lspconfig.oxlint.setup({
+        capabilities = capabilities
       })
       lspconfig["emmet_ls"].setup({
         capabilities = capabilities,
