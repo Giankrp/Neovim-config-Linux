@@ -59,10 +59,29 @@ return {
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
       local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-      end
+      vim.diagnostic.config({
+        virtual_text = {
+          spacing = 4,
+          source = "if_many",
+          prefix = "●",
+        },
+        virtual_lines = true,
+        severity_sort = true,
+        underline = { severity = vim.diagnostic.severity.ERROR },
+        float = { border = "rounded", source = "if_many" },
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = signs.Error,
+            [vim.diagnostic.severity.WARN] = signs.Warn,
+            [vim.diagnostic.severity.INFO] = signs.Info,
+            [vim.diagnostic.severity.HINT] = signs.Hint,
+          },
+        },
+      })
+
+      lspconfig.lemminx.setup({
+        capabilities = capabilities,
+      })
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
       })
@@ -108,9 +127,30 @@ return {
         capabilities = capabilities,
         settings = {
           gopls = {
-            analyses = {
-              unusedparams = true,
+            gofumpt = true,
+            codelenses = {
+              upgrade_dependency = true,
+              vendor = true,
+              tidy = true,
             },
+            hints = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              compositeLiteralTypes = true,
+              constantValues = true,
+              functionTypeParameters = true,
+              parameterNames = true,
+              rangeVariableTypes = true,
+            },
+            analyses = {
+              nilness = true,
+              unusedparams = true,
+              unusedwrite = true,
+              useany = true,
+            },
+            usePlaceholders = true,
+            completeUnimported = true,
+            staticcheck = true,
           },
         },
       })
@@ -125,7 +165,7 @@ return {
       })
       lspconfig.eslint.setup({
         capabilities = capabilities,
-        on_attach = function(client, bufnr)
+        on_attach = function(_, bufnr)
           vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = bufnr,
             command = "EslintFixAll",
@@ -134,7 +174,7 @@ return {
       })
 
       lspconfig.oxlint.setup({
-        capabilities = capabilities
+        capabilities = capabilities,
       })
       lspconfig["emmet_ls"].setup({
         capabilities = capabilities,
@@ -147,6 +187,12 @@ return {
         capabilities = capabilities,
       })
       lspconfig.jdtls.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.pyright.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.ruff.setup({
         capabilities = capabilities,
       })
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP hover" })
