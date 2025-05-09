@@ -196,8 +196,8 @@ return {
         capabilities = capabilities,
       })
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP hover" })
-      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Go to references" })
+      -- vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+     -- vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Go to references" })
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP code actions" })
       vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Lsp Rename" })
     end,
