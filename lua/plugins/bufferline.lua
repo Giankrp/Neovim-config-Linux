@@ -1,7 +1,7 @@
 return {
 
   "akinsho/bufferline.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { "echasnovski/mini.icons" },
   opts = {
     indicator_selected = {
       fg = { attribute = "fg", highlight = "Function" },
