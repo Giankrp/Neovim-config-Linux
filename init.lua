@@ -12,5 +12,15 @@ end
 vim.opt.rtp:prepend(lazypath)
 local opts = {}
 require("nvim-options")
+require("lsp")
 require("lazy").setup("plugins")
+
+vim.diagnostic.config({
+    virtual_lines = {
+        current_line = true,
+    },
+})
+vim.lsp.config("*", {
+  capabilities = require("blink.cmp").get_lsp_capabilities(),
+})
 
